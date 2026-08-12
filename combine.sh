@@ -18,6 +18,7 @@ esac
 PROFILE="${RESOLUTION}${FPS}"
 
 mkdir -p output
+OUTPUT_FILE=${OUTPUT_FILE:-output/webrtc_story_silent.mp4}
 FILES=(
   "media/videos/ch01_signaling/$PROFILE/Chapter1Signaling.mp4"
   "media/videos/ch02_ice_stun_turn/$PROFILE/Chapter2IceStunTurn.mp4"
@@ -36,6 +37,6 @@ for f in "${FILES[@]}"; do
   printf "file '%s'\n" "$(realpath "$f")" >> "$LIST"
 done
 
-ffmpeg -y -f concat -safe 0 -i "$LIST" -c copy output/webrtc_story.mp4
+ffmpeg -y -f concat -safe 0 -i "$LIST" -c copy "$OUTPUT_FILE"
 
-echo "Created output/webrtc_story.mp4"
+echo "Created $OUTPUT_FILE"

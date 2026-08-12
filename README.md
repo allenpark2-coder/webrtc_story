@@ -5,11 +5,14 @@
 ## 預覽影片
 
 - [完整五章（Full HD 1080p / 30fps）](output/webrtc_story.mp4)
-- [第 1 章：Signaling & SDP](media/videos/ch01_signaling/1080p30/Chapter1Signaling.mp4)
-- [第 2 章：ICE / STUN / TURN](media/videos/ch02_ice_stun_turn/1080p30/Chapter2IceStunTurn.mp4)
-- [第 3 章：DTLS & SRTP](media/videos/ch03_dtls_srtp/1080p30/Chapter3DtlsSrtp.mp4)
-- [第 4 章：ABR / Congestion Control](media/videos/ch04_abr/1080p30/Chapter4Abr.mp4)
-- [第 5 章：Mesh / SFU / MCU](media/videos/ch05_topologies/1080p30/Chapter5Topologies.mp4)
+- [第 1 章：Signaling & SDP](output/chapters/Chapter1Signaling.mp4)
+- [第 2 章：ICE / STUN / TURN](output/chapters/Chapter2IceStunTurn.mp4)
+- [第 3 章：DTLS & SRTP](output/chapters/Chapter3DtlsSrtp.mp4)
+- [第 4 章：ABR / Congestion Control](output/chapters/Chapter4Abr.mp4)
+- [第 5 章：Mesh / SFU / MCU](output/chapters/Chapter5Topologies.mp4)
+
+所有預覽影片均包含台灣中文旁白；完整影片另附可開關的中文字幕軌與
+[`webrtc_story.srt`](output/webrtc_story.srt) 字幕檔。
 
 ## 五章
 
@@ -67,10 +70,27 @@ QUALITY=l ./render_all.sh
 QUALITY=l ./combine.sh
 ```
 
-輸出：
+這個步驟只合併無旁白的 Manim 原始動畫，輸出：
+
+```text
+output/webrtc_story_silent.mp4
+```
+
+## 產生旁白、字幕與最終影片
+
+先完成 1080p 渲染，再執行：
+
+```bash
+source .venv/bin/activate
+python narration/build_video.py --profile 1080p30 --fps 30
+```
+
+腳本使用 `zh-TW-HsiaoChenNeural` 台灣中文女聲，依旁白長度同步各章動畫，
+並輸出 AAC 音軌與可開關的中文字幕：
 
 ```text
 output/webrtc_story.mp4
+output/webrtc_story.srt
 ```
 
 ## 中文字型
