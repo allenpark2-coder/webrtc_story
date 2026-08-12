@@ -2,6 +2,15 @@
 
 一套可直接渲染的 Manim 五章 WebRTC 教學動畫。核心目的不是「讓 PPT 動起來」，而是把生活故事與真實協定流程同步呈現。
 
+## 預覽影片
+
+- [完整五章（480p / 30fps）](output/webrtc_story.mp4)
+- [第 1 章：Signaling & SDP](media/videos/ch01_signaling/480p30/Chapter1Signaling.mp4)
+- [第 2 章：ICE / STUN / TURN](media/videos/ch02_ice_stun_turn/480p30/Chapter2IceStunTurn.mp4)
+- [第 3 章：DTLS & SRTP](media/videos/ch03_dtls_srtp/480p30/Chapter3DtlsSrtp.mp4)
+- [第 4 章：ABR / Congestion Control](media/videos/ch04_abr/480p30/Chapter4Abr.mp4)
+- [第 5 章：Mesh / SFU / MCU](media/videos/ch05_topologies/480p30/Chapter5Topologies.mp4)
+
 ## 五章
 
 1. **Signaling & SDP** — 小明與小美透過信令伺服器交換 SDP Offer / Answer。
@@ -50,6 +59,12 @@ QUALITY=l ./render_all.sh
 
 ```bash
 ./combine.sh
+```
+
+若前面使用低畫質快速預覽，合併時使用相同設定：
+
+```bash
+QUALITY=l ./combine.sh
 ```
 
 輸出：

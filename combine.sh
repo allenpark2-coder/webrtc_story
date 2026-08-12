@@ -1,13 +1,29 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+PROJECT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+cd "$PROJECT_DIR"
+
+QUALITY=${QUALITY:-h}
+FPS=${FPS:-30}
+
+case "$QUALITY" in
+  l) RESOLUTION=480p ;;
+  m) RESOLUTION=720p ;;
+  h) RESOLUTION=1080p ;;
+  k) RESOLUTION=2160p ;;
+  *) echo "Unsupported QUALITY: $QUALITY"; exit 1 ;;
+esac
+
+PROFILE="${RESOLUTION}${FPS}"
+
 mkdir -p output
 FILES=(
-  "$(find media/videos -type f -name 'Chapter1Signaling.mp4' | head -n1)"
-  "$(find media/videos -type f -name 'Chapter2IceStunTurn.mp4' | head -n1)"
-  "$(find media/videos -type f -name 'Chapter3DtlsSrtp.mp4' | head -n1)"
-  "$(find media/videos -type f -name 'Chapter4Abr.mp4' | head -n1)"
-  "$(find media/videos -type f -name 'Chapter5Topologies.mp4' | head -n1)"
+  "media/videos/ch01_signaling/$PROFILE/Chapter1Signaling.mp4"
+  "media/videos/ch02_ice_stun_turn/$PROFILE/Chapter2IceStunTurn.mp4"
+  "media/videos/ch03_dtls_srtp/$PROFILE/Chapter3DtlsSrtp.mp4"
+  "media/videos/ch04_abr/$PROFILE/Chapter4Abr.mp4"
+  "media/videos/ch05_topologies/$PROFILE/Chapter5Topologies.mp4"
 )
 
 for f in "${FILES[@]}"; do
