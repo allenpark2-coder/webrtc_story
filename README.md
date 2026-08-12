@@ -4,12 +4,12 @@
 
 ## 預覽影片
 
-- [完整五章（480p / 30fps）](output/webrtc_story.mp4)
-- [第 1 章：Signaling & SDP](media/videos/ch01_signaling/480p30/Chapter1Signaling.mp4)
-- [第 2 章：ICE / STUN / TURN](media/videos/ch02_ice_stun_turn/480p30/Chapter2IceStunTurn.mp4)
-- [第 3 章：DTLS & SRTP](media/videos/ch03_dtls_srtp/480p30/Chapter3DtlsSrtp.mp4)
-- [第 4 章：ABR / Congestion Control](media/videos/ch04_abr/480p30/Chapter4Abr.mp4)
-- [第 5 章：Mesh / SFU / MCU](media/videos/ch05_topologies/480p30/Chapter5Topologies.mp4)
+- [完整五章（Full HD 1080p / 30fps）](output/webrtc_story.mp4)
+- [第 1 章：Signaling & SDP](media/videos/ch01_signaling/1080p30/Chapter1Signaling.mp4)
+- [第 2 章：ICE / STUN / TURN](media/videos/ch02_ice_stun_turn/1080p30/Chapter2IceStunTurn.mp4)
+- [第 3 章：DTLS & SRTP](media/videos/ch03_dtls_srtp/1080p30/Chapter3DtlsSrtp.mp4)
+- [第 4 章：ABR / Congestion Control](media/videos/ch04_abr/1080p30/Chapter4Abr.mp4)
+- [第 5 章：Mesh / SFU / MCU](media/videos/ch05_topologies/1080p30/Chapter5Topologies.mp4)
 
 ## 五章
 
