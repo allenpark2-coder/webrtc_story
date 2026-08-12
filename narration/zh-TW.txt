@@ -1,0 +1,17 @@
+【第 1 章：交換名片】
+小明想和小美視訊，但兩人還不知道該如何建立通訊。WebRTC 本身不規定信令協定，因此應用程式通常會透過 WebSocket、HTTP 或其他方式，讓雙方交換 SDP。SDP 就像一張通訊名片，描述音訊、影像、Codec、DTLS fingerprint，以及建立連線需要的資訊。
+
+【第 2 章：尋找秘密通道】
+真正困難的地方，是兩端通常都躲在 NAT 或防火牆後面。STUN 可以告訴小明，外界看到他的 IP 與 Port 是什麼。ICE 會收集多種 candidate，組成 candidate pair，逐一做 connectivity check。如果能直接連線，就選擇成本較低的 P2P 路徑；如果 NAT 或企業防火牆讓直連失敗，就改用 TURN 伺服器中繼媒體。
+
+【第 3 章：遞送加密金鑰】
+ICE 成功，只代表路徑打通。WebRTC 還需要建立安全通道。雙方進行 DTLS handshake，驗證 SDP 中交換的 fingerprint，並導出 SRTP 所需要的金鑰材料。之後真正的音訊與影像 RTP 封包，就會透過 SRTP 加密傳送；RTCP 控制資訊則由 SRTCP 保護。
+
+【第 4 章：應對交通堵塞】
+網路不會永遠穩定。當可用頻寬下降、RTT 上升或封包遺失增加時，WebRTC 的壅塞控制與自適應串流機制會降低傳送 bitrate，必要時也可以調整解析度、幀率或 simulcast、SVC layer。這裡如果產品使用 Mamba 一類演算法，它屬於特定的頻寬估測或 ABR 實作，而不是 WebRTC 規範本身。
+
+【第 5 章：從兩人世界到百人派對】
+兩人通話可以很自然地 P2P，但多人通話若使用 Mesh，每增加一個人，每個端點要處理的上傳與下載連線都會增加。SFU 讓每個人只需把自己的媒體送到伺服器，再由伺服器選擇性轉發，是現代多人視訊會議的主流架構。MCU 則會在伺服器端解碼、混合，再重新編碼，接收端比較簡單，但伺服器成本更高。
+
+【總結】
+WebRTC 的旅程可以記成六個步驟：先透過 Signaling 交換 SDP；再由 ICE、STUN、TURN 找到能走的路；接著用 DTLS 建立金鑰；用 SRTP 安全傳送音訊與影像；網路變化時靠 congestion control 與 ABR 維持體驗；最後依參與人數選擇 Mesh、SFU 或 MCU。
